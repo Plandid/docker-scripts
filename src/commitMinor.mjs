@@ -10,7 +10,7 @@ if (!process.argv[2]) {
     shell.exit(1);
 }
 
-let package = JSON.parse(
+var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
 );
 
@@ -19,20 +19,20 @@ if (!shell.which('git')) {
     shell.exit(1);
 }
 
-let [major, minor, patch] = package.version.split('.');
-package.version = `${major}.${parseInt(minor) + 1}.${0}`;
-fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+const [major, minor, patch] = packageJson.version.split('.');
+packageJson.version = `${major}.${parseInt(minor) + 1}.${0}`;
+fs.writeFileSync(path.join(process.cwd(), 'package.jsom'), JSON.stringify(packageJson, null, 2));
 
 if (shell.exec('git add .').code !== 0) {
     shell.echo('error executing git add');
-    package.version = `${parseInt(major)}.${minor}.${0}`;
-    fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+    packageJson.version = `${major}.${minor}.${patch}`;
+    fs.writeFileSync(path.join(process.cwd(), 'package.jsom'), JSON.stringify(packageJson, null, 2));
     shell.exit(1);
 }
 
 if (shell.exec(`git commit -m ${process.argv[2]}`) !== 0) {
     shell.echo('error executing git commit');
-    package.version = `${parseInt(major)}.${minor}.${0}`;
-    fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+    packageJson.version = `${major}.${minor}.${patch}`;
+    fs.writeFileSync(path.join(process.cwd(), 'package.jsom'), JSON.stringify(packageJson, null, 2));
     shell.exit(1);
 }

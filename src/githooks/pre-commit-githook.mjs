@@ -4,11 +4,11 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 
-let package = JSON.parse(
+var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
 );
 
-let [major, minor, patch] = package.version.split('.');
-package.version = major + '.' + minor + '.' + (parseInt(patch) + 1).toString();
-fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+const [major, minor, patch] = packageJson.version.split('.');
+packageJson.version = major + '.' + minor + '.' + (parseInt(patch) + 1).toString();
+fs.writeFileSync(path.join(process.cwd(), 'package.jsom'), JSON.stringify(packageJson, null, 2));
 

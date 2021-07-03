@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 
-let package = JSON.parse(
+const packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
 );
 
@@ -14,7 +14,7 @@ if (!shell.which('git')) {
     shell.exit(1);
 }
 
-if (shell.exec('git tag ' + package.version).code !== 0) {
+if (shell.exec('git tag ' + packageJson.version).code !== 0) {
     console.error('error executing git tag');
     shell.exit(1);
 }

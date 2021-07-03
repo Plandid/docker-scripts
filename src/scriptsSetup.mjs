@@ -30,6 +30,10 @@ try {
     shell.exit(1);
 }
 
+shell.chmod('+x', path.join(gitHooksPath, 'post-commit'));
+shell.chmod('+x', path.join(gitHooksPath, 'pre-commit'));
+shell.chmod('+x', path.join(gitHooksPath, 'post-merge'));
+
 var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
 );
