@@ -1,2 +1,2 @@
 #! /bin/sh
-npm run pre-commit-githook.mjs
+npm run pre-commit-githook

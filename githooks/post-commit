@@ -1,2 +1,2 @@
 #! /bin/sh
-npm run post-commit-githook.mjs
+npm run post-commit-githook

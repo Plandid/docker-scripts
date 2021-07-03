@@ -21,9 +21,9 @@ if (shell.exec(`git config core.hooksPath ${gitHooksPath}`).code !== 0) {
 }
 
 try {
-    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), '#! /bin/sh\nnpm run post-commit-githook.mjs');
-    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), '#! /bin/sh\nnpm run pre-commit-githook.mjs');
-    fs.writeFileSync(path.join(gitHooksPath, 'post-merge'), '#! /bin/sh\nnpm run post-merge-githook.mjs');
+    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), '#! /bin/sh\nnpm run post-commit-githook');
+    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), '#! /bin/sh\nnpm run pre-commit-githook');
+    fs.writeFileSync(path.join(gitHooksPath, 'post-merge'), '#! /bin/sh\nnpm run post-merge-githook');
 } catch (error) {
     console.error(error);
     shell.rm('-r', gitHooksPath);
