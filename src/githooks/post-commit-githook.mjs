@@ -14,7 +14,4 @@ if (!shell.which('git')) {
     shell.exit(1);
 }
 
-if (shell.exec('git tag ' + packageJson.version).code !== 0) {
-    console.error('error executing git tag');
-    shell.exit(1);
-}
+shell.exec('git tag ' + packageJson.version);
