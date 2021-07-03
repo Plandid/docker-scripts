@@ -1,2 +1,2 @@
 #! /bin/sh
-npx pre-commit-githook
+npm run pre-commit-githook

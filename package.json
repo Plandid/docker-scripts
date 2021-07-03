@@ -1,24 +1,23 @@
 {
   "name": "@plandid/node-scripts",
-  "version": "1.0.0",
+  "version": "1.0.11",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
-    "scripts-setup": "src/scriptsSetup.mjs",
-    "commit-minor": "src/commitMinor.mjs",
-    "commit-major": "src/commitMajor.mjs",
-    "post-commit-githook": "src/githooks/post-commit-githook.mjs",
-    "pre-commit-githook": "src/githooks/pre-commit-githook.mjs",
-    "docker-build": "src/dockerBuild.mjs",
-    "docker-run": "src/dockerRun.mjs",
-    "docker-kill-all": "src/dockerKillAll.mjs"
+    "scripts-setup": "src/scriptsSetup.js",
+    "commit-minor": "src/commitMinor.js",
+    "commit-major": "src/commitMajor.js",
+    "post-commit-githook": "src/githooks/post-commit-githook.js",
+    "pre-commit-githook": "src/githooks/pre-commit-githook.js",
+    "docker-build": "src/dockerBuild.js",
+    "docker-run": "src/dockerRun.js",
+    "docker-kill-all": "src/dockerKillAll.js"
   },
   "scripts": {
-    "scripts-setup": "node ./src/scriptsSetup.mjs",
-    "commit-minor": "node ./src/commitMinor.mjs",
-    "commit-major": "node ./src/commitMajor.mjs",
-    "post-commit-githook": "node ./src/githooks/post-commit-githook.mjs",
-    "pre-commit-githook": "node ./src/githooks/pre-commit-githook.mjs",
+    "commit-minor": "node ./src/commitMinor.js",
+    "commit-major": "node ./src/commitMajor.js",
+    "post-commit-githook": "node ./src/githooks/post-commit-githook.js",
+    "pre-commit-githook": "node ./src/githooks/pre-commit-githook.js",
     "test": "exit 0"
   },
   "repository": {

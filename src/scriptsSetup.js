@@ -1,20 +1,28 @@
 #! /usr/bin/env node
 
-import { exec } from 'child_process';
-import path from 'path';
-import fs from 'fs';
-import process, { stderr, stdout } from 'process';
+const { exec } = require('child_process');
+const path = require('path');
+const fs = require('fs');
+const process = require('process');
 
 const gitHooksPath = path.join(process.cwd(), 'githooks')
+
+exec(`rm -r ${gitHooksPath}`, (error, stderr, stdout) => {
+    if (error) {
+        console.error(error);
+    }
+    if (stderr) {
+        console.error(error);
+    }
+    console.log(stdout);
+});
 
 exec(`mkdir ${gitHooksPath}`, (error, stderr, stdout) => {
     if (error) {
         console.error(error);
-        process.exit(1);
     }
     if (stderr) {
         console.error(error);
-        process.exit(1);
     }
     console.log(stdout);
 });
@@ -22,11 +30,9 @@ exec(`mkdir ${gitHooksPath}`, (error, stderr, stdout) => {
 exec(`git config core.hooksPath ${gitHooksPath}`, (error, stderr, stdout) => {
     if (error) {
         console.error(error);
-        process.exit(1);
     }
     if (stderr) {
         console.error(error);
-        process.exit(1);
     }
     console.log(stdout);
 });
@@ -39,11 +45,9 @@ try {
     exec(`rm -r ${gitHooksPath}`, (error, stderr, stdout) => {
         if (error) {
             console.error(error);
-            process.exit(1);
         }
         if (stderr) {
             console.error(error);
-            process.exit(1);
         }
         console.log(stdout);
     });
@@ -52,11 +56,9 @@ try {
 exec(`chmod +x ${path.join(gitHooksPath, 'post-commit')}`, (error, stderr, stdout) => {
     if (error) {
         console.error(error);
-        process.exit(1);
     }
     if (stderr) {
         console.error(error);
-        process.exit(1);
     }
     console.log(stdout);
 });
@@ -64,11 +66,9 @@ exec(`chmod +x ${path.join(gitHooksPath, 'post-commit')}`, (error, stderr, stdou
 exec(`chmod +x ${path.join(gitHooksPath, 'pre-commit')}`, (error, stderr, stdout) => {
     if (error) {
         console.error(error);
-        process.exit(1);
     }
     if (stderr) {
         console.error(error);
-        process.exit(1);
     }
     console.log(stdout);
 });
