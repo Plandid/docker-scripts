@@ -19,25 +19,9 @@ packageJson.version = `${parseInt(major) + 1}.${0}.${-1}`;
 fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
 
 exec('git add .', (error, stderr, stdout) => {
-    if (error) {
-        console.error(error);
-        process.exit(1);
-    }
-    if (stderr) {
-        console.error(stderr);
-        process.exit(1);
-    }
     console.log(stdout);
 });
 
 exec(`git commit -m "${process.argv[2]}"`, (error, stderr, stdout) => {
-    if (error) {
-        console.error(error);
-        process.exit(1);
-    }
-    if (stderr) {
-        console.error(stderr);
-        process.exit(1);
-    }
     console.log(stdout);
 });
