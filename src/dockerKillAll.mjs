@@ -7,7 +7,4 @@ if (!shell.which('docker')) {
     shell.exit(1);
 }
 
-if (shell.exec(`docker container kill $(docker ps -q)`) !== 0) {
-    console.error(`couldn't run docker build`);
-    shell.exit(1);
-}
+shell.exec(`docker container kill $(docker ps -q)`);

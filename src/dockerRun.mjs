@@ -22,7 +22,4 @@ if (!shell.which('docker')) {
     shell.exit(1);
 }
 
-if (shell.exec(`docker run -d --rm --env-file .env -p 80:${process.env.PORT}${httpsParam} ${imageName}:${version}`) !== 0) {
-    console.error(`couldn't run docker run`);
-    shell.exit(1);
-}
+shell.exec(`docker run -d --rm --env-file .env -p 80:${process.env.PORT}${httpsParam} ${imageName}:${version}`);
