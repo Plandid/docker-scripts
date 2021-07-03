@@ -10,6 +10,5 @@ var packageJson = JSON.parse(
 
 const [major, minor, patch] = packageJson.version.split('.');
 packageJson.version = major + '.' + minor + '.' + (parseInt(patch) + 1).toString();
-console.log(JSON.stringify(packageJson, null, 2))
-fs.writeFileSync(path.join(process.cwd(), 'package.jsom'), JSON.stringify(packageJson, null, 2));
+fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
 
