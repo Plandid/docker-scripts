@@ -1,14 +1,8 @@
 #! /usr/bin/env node
 
-const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const process = require('process');
-
-if (!process.argv[2]) {
-    console.error('no commit message passed');
-    process.exit(1);
-}
 
 var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
