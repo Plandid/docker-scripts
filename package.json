@@ -1,15 +1,14 @@
 {
-  "name": "server-scripts",
-  "version": "0.0.0",
+  "name": "@plandid/server-scripts",
+  "version": "0.0.1",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
-    "scripts-setup": "./src/scriptsSetup.mjs",
-    "commit-minor": "./src/commitMinor.mjs",
-    "commit-major": "./src/commitMajor.mjs",
-    "post-commit-githook": "./src/githooks/post-commit-githook.mjs",
-    "pre-commit-githook": "./src/githooks/pre-commit-githook.mjs",
-    "post-merge-githook": "./src/githooks/post-merge-githook.mjs"
+    "scripts-setup": "src/scriptsSetup.mjs",
+    "commit-minor": "src/commitMinor.mjs",
+    "commit-major": "src/commitMajor.mjs",
+    "post-commit-githook": "src/githooks/post-commit-githook.mjs",
+    "pre-commit-githook": "src/githooks/pre-commit-githook.mjs"
   },
   "scripts": {
     "scripts-setup": "node ./src/scriptsSetup.mjs",
@@ -17,9 +16,7 @@
     "commit-major": "node ./src/commitMajor.mjs",
     "post-commit-githook": "node ./src/githooks/post-commit-githook.mjs",
     "pre-commit-githook": "node ./src/githooks/pre-commit-githook.mjs",
-    "post-merge-githook": "node ./src/githooks/post-merge-githook.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "scripts-setup"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -33,5 +30,6 @@
   "homepage": "https://github.com/Plandid/node-server-scripts#readme",
   "dependencies": {
     "shelljs": "^0.8.4"
-  }
+  },
+  "devDependencies": {}
 }

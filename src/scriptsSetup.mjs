@@ -21,9 +21,8 @@ if (shell.exec(`git config core.hooksPath ${gitHooksPath}`).code !== 0) {
 }
 
 try {
-    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), '#! /bin/sh\nnpm run post-commit-githook');
-    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), '#! /bin/sh\nnpm run pre-commit-githook');
-    fs.writeFileSync(path.join(gitHooksPath, 'post-merge'), '#! /bin/sh\nnpm run post-merge-githook');
+    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), '#! /bin/sh\nnpx post-commit-githook');
+    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), '#! /bin/sh\nnpx pre-commit-githook');
 } catch (error) {
     console.error(error);
     shell.rm('-r', gitHooksPath);
@@ -32,7 +31,6 @@ try {
 
 shell.chmod('+x', path.join(gitHooksPath, 'post-commit'));
 shell.chmod('+x', path.join(gitHooksPath, 'pre-commit'));
-shell.chmod('+x', path.join(gitHooksPath, 'post-merge'));
 
 var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
