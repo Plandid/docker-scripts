@@ -1,6 +1,6 @@
 {
   "name": "@plandid/server-scripts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
@@ -16,7 +16,7 @@
     "commit-major": "node ./src/commitMajor.mjs",
     "post-commit-githook": "node ./src/githooks/post-commit-githook.mjs",
     "pre-commit-githook": "node ./src/githooks/pre-commit-githook.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "exit 0"
   },
   "repository": {
     "type": "git",
