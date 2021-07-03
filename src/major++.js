@@ -17,11 +17,3 @@ var packageJson = JSON.parse(
 const [major, minor, patch] = packageJson.version.split('.');
 packageJson.version = `${parseInt(major) + 1}.${0}.${-1}`;
 fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
-
-exec('git add .', (error, stderr, stdout) => {
-    console.log(stdout);
-});
-
-exec(`git commit -m "${process.argv[2]}"`, (error, stderr, stdout) => {
-    console.log(stdout);
-});
