@@ -6,11 +6,20 @@
   "bin": {
     "scripts-setup": "./src/scriptsSetup.mjs",
     "commit-minor": "./src/commitMinor.mjs",
-    "commit-major": "./src/commitMajor.mjs"
+    "commit-major": "./src/commitMajor.mjs",
+    "post-commit-githook": "./src/githooks/post-commit-githook.mjs",
+    "pre-commit-githook": "./src/githooks/pre-commit-githook.mjs",
+    "post-merget-githook": "./src/githooks/post-merge-githook.mjs"
   },
   "scripts": {
-    "prepare": "utils-setup",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "scripts-setup": "node ./src/scriptsSetup.mjs",
+    "commit-minor": "node ./src/commitMinor.mjs",
+    "commit-major": "node ./src/commitMajor.mjs",
+    "post-commit-githook": "node ./src/githooks/post-commit-githook.mjs",
+    "pre-commit-githook": "node ./src/githooks/pre-commit-githook.mjs",
+    "post-merget-githook": "node ./src/githooks/post-merge-githook.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "scripts-setup"
   },
   "repository": {
     "type": "git",

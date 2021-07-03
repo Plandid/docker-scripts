@@ -34,6 +34,6 @@ var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
 );
 
-packageJson['scripts']['prepare'] = 'utils-setup';
+packageJson['scripts']['prepare'] = 'scripts-setup';
 
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
