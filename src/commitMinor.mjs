@@ -34,5 +34,5 @@ if (shell.exec(`git commit --no-verify -m "${process.argv[2]}"`) !== 0) {
     shell.echo('error executing git commit');
     packageJson.version = `${major}.${minor}.${patch}`;
     fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
-    shell.exit(1);
+    shell.exit(1); 
 }
