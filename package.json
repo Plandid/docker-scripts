@@ -1,0 +1,28 @@
+{
+  "name": "server-scripts",
+  "version": "0.0.0",
+  "description": "Tooling for node servers for Plandid LLC",
+  "main": "./src/index.js",
+  "bin": {
+    "scripts-setup": "./src/scriptsSetup.mjs",
+    "commit-minor": "./src/commitMinor.mjs",
+    "commit-major": "./src/commitMajor.mjs"
+  },
+  "scripts": {
+    "prepare": "utils-setup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plandid/node-server-scripts.git"
+  },
+  "author": "Carl Schader",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Plandid/node-server-scripts/issues"
+  },
+  "homepage": "https://github.com/Plandid/node-server-scripts#readme",
+  "dependencies": {
+    "shelljs": "^0.8.4"
+  }
+}
