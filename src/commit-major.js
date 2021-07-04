@@ -10,23 +10,18 @@ if (!process.argv[2]) {
     process.exit(1);
 }
 
-try {
-    execSync('npm run test');
-} catch (e) {
-    process.exit(1);
-}
-
 var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
 );
 
 const [major, minor, patch] = packageJson.version.split('.');
-packageJson.version = `${parseInt(major) + 1}.${0}.${-1}`;
+packageJson.version = `${parseInt(major) + 1}.${minor}.${-1}`;
 fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
 
 try {
     execSync('git add .');
     execSync(`git commit -m "${process.argv[2]}"`);
+    console.log('commit complete');
 } catch (e) {
     console.error(e);
     console.log('resetting version');

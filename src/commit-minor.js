@@ -10,12 +10,6 @@ if (!process.argv[2]) {
     process.exit(1);
 }
 
-try {
-    execSync('npm run test');
-} catch (e) {
-    process.exit(1);
-}
-
 var packageJson = JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'package.json'))
 );
@@ -27,6 +21,7 @@ fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packag
 try {
     execSync('git add .');
     execSync(`git commit -m "${process.argv[2]}"`);
+    console.log('commit complete');
 } catch (e) {
     console.error(e);
     console.log('resetting version');
