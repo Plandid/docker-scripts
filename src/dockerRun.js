@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const process = require('process');
@@ -16,14 +16,4 @@ const version = process.argv[3] ? process.argv[3] : packageJson.version;
 
 const httpsParam = process.env.HTTPS_PORT ? ` -p 443:${process.env.HTTPS_PORT}` : "";
 
-exec(`docker run -d --rm --env-file .env -p 80:${process.env.PORT}${httpsParam} ${imageName}:${version}`, (error, stderr, stdout) => {
-    if (error) {
-        console.error(error);
-        process.exit(1);
-    }
-    if (stderr) {
-        console.error(stderr);
-        process.exit(1);
-    }
-    console.log(stdout);
-});
+execSync(`docker run -d --rm --env-file .env -p 80:${process.env.PORT}${httpsParam} ${imageName}:${version}`);

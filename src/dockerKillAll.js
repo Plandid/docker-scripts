@@ -1,5 +1,5 @@
 #! /usr/bin/env node
 
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
-exec(`docker container kill $(docker ps -q)`);
+execSync(`docker container kill $(docker ps -q)`);
