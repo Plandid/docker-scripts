@@ -7,18 +7,8 @@ const process = require('process');
 
 const gitHooksPath = path.join(process.cwd(), 'githooks')
 
-if (fs.accessSync(gitHooksPath)) {
-    try {
-        execSync(`rm -r ${gitHooksPath}`);
-    } catch (e) {
-        process.exit(1);
-    }
-} else {
-    try {
-        execSync(`mkdir ${gitHooksPath}`);
-    } catch (e) {
-        console.log('continuing')
-    }
+if (!fs.existsSync(gitHooksPath)) {
+    fs.mkdirSync(gitHooksPath);
 }
 
 execSync(`git config core.hooksPath ${gitHooksPath}`);
