@@ -46,7 +46,8 @@ const process = require('process');
 
 try {
     execSync('npm run test');
-} catch (e) {
+} catch {
+    console.log('failed tests');
     process.exit(1);
 }
 
