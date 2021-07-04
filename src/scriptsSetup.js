@@ -25,8 +25,8 @@ if (fs.accessSync(gitHooksPath)) {
 execSync(`git config core.hooksPath ${gitHooksPath}`);
 
 try {
-    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), 'npx post-commit-githook');
-    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), 'npx pre-commit-githook');
+    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), '#! /bin/sh\nnpx post-commit-githook');
+    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), '#! /bin/sh\nnpx pre-commit-githook');
 } catch (error) {
     console.error(error);
     execSync(`rm -r ${gitHooksPath}`);
