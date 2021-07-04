@@ -24,9 +24,45 @@ if (fs.accessSync(gitHooksPath)) {
 
 execSync(`git config core.hooksPath ${gitHooksPath}`);
 
+const postCommitData = `#! /usr/bin/env node
+
+const { execSync } = require('child_process');
+const path = require('path');
+const fs = require('fs');
+const process = require('process');
+
+var packageJson = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), 'package.json'))
+);
+
+execSync('git tag ' + packageJson.version);`;
+
+const preCommitData = `#! /usr/bin/env node
+
+const { execSync } = require('child_process');
+const path = require('path');
+const fs = require('fs');
+const process = require('process');
+
 try {
-    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), '#! /bin/sh\nnpx post-commit-githook');
-    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), '#! /bin/sh\nnpx pre-commit-githook');
+    execSync('npm run test');
+} catch (e) {
+    process.exit(1);
+}
+
+var packageJson = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), 'package.json'))
+);
+
+const [major, minor, patch] = packageJson.version.split('.');
+packageJson.version = major + '.' + minor + '.' + (parseInt(patch) + 1).toString();
+fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
+
+`;
+
+try {
+    fs.writeFileSync(path.join(gitHooksPath, 'post-commit'), postCommitData);
+    fs.writeFileSync(path.join(gitHooksPath, 'pre-commit'), preCommitData);
 } catch (error) {
     console.error(error);
     execSync(`rm -r ${gitHooksPath}`);
