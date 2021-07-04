@@ -17,7 +17,6 @@ if (fs.accessSync(gitHooksPath)) {
     try {
         execSync(`mkdir ${gitHooksPath}`);
     } catch (e) {
-        console.error(e);
         console.log('continuing')
     }
 }
