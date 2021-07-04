@@ -14,7 +14,12 @@ if (fs.accessSync(gitHooksPath)) {
         process.exit(1);
     }
 } else {
-    execSync(`mkdir ${gitHooksPath}`);
+    try {
+        execSync(`mkdir ${gitHooksPath}`);
+    } catch (e) {
+        console.error(e);
+        console.log('continuing')
+    }
 }
 
 execSync(`git config core.hooksPath ${gitHooksPath}`);
