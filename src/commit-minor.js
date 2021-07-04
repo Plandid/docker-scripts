@@ -21,5 +21,15 @@ var packageJson = JSON.parse(
 );
 
 const [major, minor, patch] = packageJson.version.split('.');
-packageJson.version = `${major}.${parseInt(minor) + 1}.${0}`;
+packageJson.version = `${major}.${parseInt(minor) + 1}.${-1}`;
 fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
+
+try {
+    execSync('git add .');
+    execSync(`git commit -m "${process.argv[2]}"`);
+} catch (e) {
+    console.error(e);
+    console.log('resetting version');
+    packageJson.version = `${major}.${minor}.${patch}`;
+    fs.writeFileSync(path.join(process.cwd(), 'package.json'), JSON.stringify(packageJson, null, 2));
+}
