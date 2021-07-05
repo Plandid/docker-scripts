@@ -69,9 +69,9 @@ var packageJson = JSON.parse(
 const prepareScript = ``;
 
 if (!packageJson.hasOwnProperty('scripts')) {
-    packageJson['scripts'] = { prepare: `git config core.hooksPath ${gitHooksPath}` };
+    packageJson['scripts'] = { prepare: `git config core.hooksPath ./githooks/` };
 } else {
-    packageJson['scripts']['prepare'] = `git config core.hooksPath ${gitHooksPath}`;
+    packageJson['scripts']['prepare'] = `git config core.hooksPath ./githooks/`;
 }
 
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
