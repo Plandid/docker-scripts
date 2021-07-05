@@ -1,6 +1,6 @@
 {
   "name": "@plandid/node-scripts",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
@@ -18,7 +18,8 @@
     "commit-major": "node ./src/commit-major.js",
     "post-commit-githook": "node ./src/githooks/post-commit-githook.js",
     "pre-commit-githook": "node ./src/githooks/pre-commit-githook.js",
-    "test": "exit 0"
+    "test": "exit 0",
+    "prepare": "git config core.hooksPath ./githooks/"
   },
   "repository": {
     "type": "git",
