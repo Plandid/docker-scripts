@@ -1,6 +1,6 @@
 {
   "name": "@plandid/node-scripts",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
