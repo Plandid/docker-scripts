@@ -5,11 +5,6 @@ const path = require('path');
 const fs = require('fs');
 const process = require('process');
 
-if (!fs.existsSync('.git')) {
-    console.log('this is not a git repo.');
-    process.exit(0);
-}
-
 const gitHooksPath = path.join(process.cwd(), 'githooks')
 
 if (!fs.existsSync(gitHooksPath)) {
@@ -74,9 +69,9 @@ var packageJson = JSON.parse(
 const prepareScript = ``;
 
 if (!packageJson.hasOwnProperty('scripts')) {
-    packageJson['scripts'] = { prepare: 'scripts-setup' };
+    packageJson['scripts'] = { prepare: `git config core.hooksPath ${gitHooksPath}` };
 } else {
-    packageJson['scripts']['prepare'] = 'scripts-setup';
+    packageJson['scripts']['prepare'] = `git config core.hooksPath ${gitHooksPath}`;
 }
 
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
