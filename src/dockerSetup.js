@@ -32,4 +32,4 @@ Dockerfile
 
 fs.writeFileSync('Dockerfile', dockerFileData);
 
-fs.writeFileSync('Dockerfile', dockerIgnoreData);
+fs.writeFileSync('.dockerignore', dockerIgnoreData);
