@@ -1,6 +1,6 @@
 {
   "name": "@plandid/node-scripts",
-  "version": "1.2.13",
+  "version": "1.3.0",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
@@ -9,6 +9,7 @@
     "commit-major": "src/commit-major.js",
     "post-commit-githook": "src/githooks/post-commit-githook.js",
     "pre-commit-githook": "src/githooks/pre-commit-githook.js",
+    "docker-setup": "src/dockerSetup.js",
     "docker-build": "src/dockerBuild.js",
     "docker-run": "src/dockerRun.js",
     "docker-kill-all": "src/dockerKillAll.js"
