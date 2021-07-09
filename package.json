@@ -1,10 +1,10 @@
 {
   "name": "@plandid/docker-scripts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
-    "docker-setup": "src/setup.js",
+    "docker-setup": "src/dockerSetup.js",
     "docker-build": "src/dockerBuild.js",
     "docker-run": "src/dockerRun.js",
     "docker-kill-all": "src/dockerKillAll.js"
