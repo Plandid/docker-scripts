@@ -1,6 +1,6 @@
 {
   "name": "@plandid/docker-scripts",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Tooling for node servers for Plandid LLC",
   "main": "./src/index.js",
   "bin": {
