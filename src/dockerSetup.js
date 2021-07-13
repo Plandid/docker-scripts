@@ -12,6 +12,8 @@ COPY --chown=node:node ./ ./
 
 RUN npm install --only=prod
 
+ENV NODE_ENV=production
+
 CMD ["npm", "run", "start"]`;
 
 const dockerIgnoreData = `node_modules
